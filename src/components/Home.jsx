@@ -27,6 +27,10 @@ async function logUsers() {
     let usersData = await response.json();
 
     console.log(usersData);
+    console.log(response.headers);
+    console.log(response.headers.map);
+    // console.log(...response.headers);
+
 
     return usersData;
 
@@ -38,10 +42,34 @@ async function logUsers() {
 
 };
 
+async function logPosts() {
+
+    try {
+
+    const response = await fetch(`https://blog-api-iv3t.onrender.com/posts`)
+
+    let postsData = await response.json();
+
+    console.log(postsData);
+    console.log(response.headers);
+    console.log(response.headers.map);
+    // console.log(...response.headers);
+
+
+    return postsData;
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+
+};
+
 function Home() {
 
-    // logWeather();
-    logUsers();
+    // logUsers();
+    logPosts();
 
     return(
     <div>
