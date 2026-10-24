@@ -57,13 +57,16 @@ function Posts() {
 
     return(
     <>
+      <h1> Posts </h1>
 
       {posts && posts.map(post => {
 
+        return (
         <ul key={post.id}>
           <li>{post.title}</li>
           <li>{post.content}</li>
         </ul>
+        )
 
       })}
 
