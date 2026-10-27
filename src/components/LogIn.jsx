@@ -15,6 +15,8 @@ async function fetchToken(username, password) {
     console.log(data);
 
     localStorage.setItem('token', data.token);
+    localStorage.setItem('user', data.username);
+    console.log(localStorage);
 
     console.log('Bearer '+localStorage.getItem('token'));
 

@@ -2,6 +2,7 @@
 // import { Children } from "react";
 // import { Navigate } from "react-router";
 import Home from "./components/Home";
+import Post from "./components/Post";
 import Posts from "./components/Posts";
 import LogIn from "./components/LogIn";
 import ErrorPage from "./components/ErrorPage";
@@ -15,6 +16,11 @@ const routes = [
   {
     path: "posts",
     element: <Posts />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "posts/:postId",
+    element: <Post />,
     errorElement: <ErrorPage />
   },
   {

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+
 
 async function logPosts() {
 
@@ -26,7 +28,12 @@ async function logPosts() {
 
 function Posts() {
     const [posts, setPosts] = useState(null);
-    
+
+    const navigate = useNavigate();
+
+    const handleClick = (postId , state) => {
+      navigate(`/posts/${postId}`, { state });
+    }
 
     useEffect(() => {
     
@@ -62,10 +69,12 @@ function Posts() {
       {posts && posts.map(post => {
 
         return (
-        <ul key={post.id}>
-          <li>{post.title}</li>
-          <li>{post.content}</li>
-        </ul>
+        <div key={post.id} onClick={() => {handleClick(post.id, post)}}>
+          <ul>
+            <li>{post.title}</li>
+            <li>{post.content}</li>
+          </ul>
+        </div>
         )
 
       })}
