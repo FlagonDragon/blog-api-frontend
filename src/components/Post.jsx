@@ -59,6 +59,7 @@ function Post() {
         <ul>
           <li>{post.title}</li>
           <li>{post.content}</li>
+          <li>By {post.authorName}</li>
         </ul>
       </div>
 
@@ -68,6 +69,7 @@ function Post() {
         <div key={comment.id}>
           <ul>
             <li>{comment.content}</li>
+            <li>By {comment.authorName}</li>
           </ul>
         </div>
         )

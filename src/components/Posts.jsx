@@ -72,6 +72,7 @@ function Posts() {
           <ul>
             <li>{post.title}</li>
             <li>{post.content}</li>
+            <li>By {post.authorName}</li>
           </ul>
         </div>
         )
