@@ -1,31 +1,81 @@
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 
+async function fetchComments(postId) {
 
+    try {
+
+    const response = await fetch(`https://blog-api-iv3t.onrender.com/posts/${postId}`)
+
+    let postsData = await response.json();
+
+    // console.log(postsData);
+    // console.log(response.headers);
+    // console.log(response.headers.map);
+    // console.log(...response.headers);
+
+    return postsData;
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+
+};
 
 function Post() {
+  const [comments, setComments] = useState(null);
 
   const post = useLocation().state;
 
-  console.log(post);
+  useEffect(() => {
+      
+    async function fetchCommentsWrapper() {
+
+      try {        
+
+        const data = await fetchComments(post.id);
+        // console.log(data);
+        setComments(data);
+        
+      } catch (error) {
+        console.error(error);
+      }
+
+    }
+
+    fetchCommentsWrapper();
+      
+  }, [post.id])
 
 
-// const { post } = state;
+  return(
+  <>
 
+    <h1> Post </h1>
 
-    // const [posts, setPosts] = useState(null);
+      <div> THIS IS A POST!!!
+        <ul>
+          <li>{post.title}</li>
+          <li>{post.content}</li>
+        </ul>
+      </div>
 
-    return(
-    <>
-      <h1> Post </h1>
+      {comments && comments.map(comment => {
 
-        <div> THIS IS A POST!!!
+        return (
+        <div key={comment.id}>
           <ul>
-            <li>{post.title}</li>
-            <li>{post.content}</li>
+            <li>{comment.content}</li>
           </ul>
         </div>
-    </>
-    )
+        )
+
+      })}
+    
+  </>
+  )
 
 }
 

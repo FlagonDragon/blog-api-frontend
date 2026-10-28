@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
 
-async function logPosts() {
+async function fetchPosts() {
 
     try {
 
@@ -14,7 +14,6 @@ async function logPosts() {
     // console.log(response.headers);
     // console.log(response.headers.map);
     // console.log(...response.headers);
-
 
     return postsData;
 
@@ -37,11 +36,11 @@ function Posts() {
 
     useEffect(() => {
     
-        async function logPostsWrapper() {
+        async function fetchPostsWrapper() {
     
           try {        
     
-            const data = await logPosts();
+            const data = await fetchPosts();
             // console.log(data);
             setPosts(data);
             
@@ -51,7 +50,7 @@ function Posts() {
     
         }
     
-        logPostsWrapper();
+        fetchPostsWrapper();
     
     }, [])
 
@@ -81,35 +80,7 @@ function Posts() {
 
     </>
     )
-
-
-    // <div>
-
-    //     {posts.map((post) => {
-            
-    //         return(
-    //           <>
-    //             <div>{post.title}</div>
-    //             <div>{post.content}</div>
-    //           </>
-    //         )
-
-    //     })}
-
-    // </div>
     
-
-    // for (const post of Object.entries(posts)) {
-
-    //     return(
-    //         <div>
-    //             <div>{post.title}</div>
-    //             <div>{post.content}</div>
-    //         </div>
-    //     )
-
-    // }
-
 }
 
 export default Posts;
