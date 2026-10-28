@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
+import PostDiv from "./PostDiv";
+import CommentDiv from "./CommentDiv";
 
 async function fetchComments(postId) {
 
@@ -55,23 +57,12 @@ function Post() {
 
     <h1> Post </h1>
 
-      <div> THIS IS A POST!!!
-        <ul>
-          <li>{post.title}</li>
-          <li>{post.content}</li>
-          <li>By {post.authorName}</li>
-        </ul>
-      </div>
+      <PostDiv post={post}></PostDiv>
 
       {comments && comments.map(comment => {
 
         return (
-        <div key={comment.id}>
-          <ul>
-            <li>{comment.content}</li>
-            <li>By {comment.authorName}</li>
-          </ul>
-        </div>
+        <CommentDiv comment={comment}></CommentDiv>
         )
 
       })}

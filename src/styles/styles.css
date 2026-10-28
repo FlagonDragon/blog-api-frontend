@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: midnightblue;
+    color: white;
+}
+
+h1 {
+    margin: 20px;
+}
+
+.postContainer {
+    background-color: hotpink;
+    color: black;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.commentContainer {
+    background-color: greenyellow;
+    color: black;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 20px;
+}

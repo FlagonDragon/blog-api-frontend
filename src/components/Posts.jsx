@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import PostDiv from "./PostDiv";
 
 
 async function fetchPosts() {
@@ -63,18 +64,19 @@ function Posts() {
 
     return(
     <>
+
       <h1> Posts </h1>
 
       {posts && posts.map(post => {
 
         return (
-        <div key={post.id} onClick={() => {handleClick(post.id, post)}}>
-          <ul>
-            <li>{post.title}</li>
-            <li>{post.content}</li>
-            <li>By {post.authorName}</li>
-          </ul>
-        </div>
+        <>
+        
+          <div onClick={() => {handleClick(post.id, post)}}>
+            <PostDiv post={post}></PostDiv>
+          </div>
+
+        </>
         )
 
       })}
