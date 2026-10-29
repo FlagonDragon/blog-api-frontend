@@ -10,14 +10,9 @@ async function fetchComments(postId) {
 
   const response = await fetch(`https://blog-api-iv3t.onrender.com/posts/${postId}`)
 
-  let postsData = await response.json();
+  let commentsData = await response.json();
 
-  // console.log(postsData);
-  // console.log(response.headers);
-  // console.log(response.headers.map);
-  // console.log(...response.headers);
-
-  return postsData;
+  return commentsData;
 
   } catch (error) {
 
@@ -50,7 +45,7 @@ function Post() {
 
     fetchCommentsWrapper();
       
-  }, [post.id])
+  }, [post.id, comments])
 
 
   return(
@@ -62,7 +57,7 @@ function Post() {
 
     <h2> Comments </h2>
 
-    <NewComment postId={post.id}></NewComment> 
+    <NewComment postId={post.id} handleClick={() => setComments(null)}></NewComment> 
 
     {comments && comments.map(comment => {
 

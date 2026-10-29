@@ -29,7 +29,7 @@ async function postComment(content, postId) {
 
 }
 
-function CommentDiv({postId}) {
+function CommentDiv({ postId, handleClick }) {
   const [value, setValue] = useState("");
 
   return(
@@ -50,7 +50,8 @@ function CommentDiv({postId}) {
         type='submit'
         onClick={() => {
           postComment(value, postId)
-          setValue("");
+          setValue("")
+          handleClick()
         }}
       >Submit</button>
 
