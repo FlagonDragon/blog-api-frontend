@@ -2,27 +2,28 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import PostDiv from "./PostDiv";
 import CommentDiv from "./CommentDiv";
+import NewComment from "./NewComment";
 
 async function fetchComments(postId) {
 
-    try {
+  try {
 
-    const response = await fetch(`https://blog-api-iv3t.onrender.com/posts/${postId}`)
+  const response = await fetch(`https://blog-api-iv3t.onrender.com/posts/${postId}`)
 
-    let postsData = await response.json();
+  let postsData = await response.json();
 
-    // console.log(postsData);
-    // console.log(response.headers);
-    // console.log(response.headers.map);
-    // console.log(...response.headers);
+  // console.log(postsData);
+  // console.log(response.headers);
+  // console.log(response.headers.map);
+  // console.log(...response.headers);
 
-    return postsData;
+  return postsData;
 
-    } catch (error) {
+  } catch (error) {
 
-        console.log(error);
+    console.log(error);
 
-    }
+  }
 
 };
 
@@ -57,15 +58,19 @@ function Post() {
 
     <h1> Post </h1>
 
-      <PostDiv post={post}></PostDiv>
+    <PostDiv post={post}></PostDiv>
 
-      {comments && comments.map(comment => {
+    <h2> Comments </h2>
 
-        return (
-        <CommentDiv comment={comment}></CommentDiv>
-        )
+    <NewComment postId={post.id}></NewComment> 
 
-      })}
+    {comments && comments.map(comment => {
+
+      return (
+      <CommentDiv comment={comment}></CommentDiv>
+      )
+
+    })}
     
   </>
   )

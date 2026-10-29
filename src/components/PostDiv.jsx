@@ -1,13 +1,17 @@
 function PostDiv({post}) {
 
     return(
+
     <div className="postContainer"> 
-        <ul>
-          <li>{post.title}</li>
-          <li>{post.content}</li>
-          <li>By {post.authorName}</li>
-        </ul>
-      </div>
+
+        <h3>{post.title}</h3>
+
+        <div>{post.content}</div>
+        
+        <div>By {post.authorName}</div>
+        
+    </div>
+
     )
 
 }
