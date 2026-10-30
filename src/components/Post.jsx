@@ -24,6 +24,7 @@ async function fetchComments(postId) {
 
 function Post() {
   const [comments, setComments] = useState(null);
+  const [remount, setRemount] = useState(false);
 
   const post = useLocation().state;
 
@@ -34,8 +35,9 @@ function Post() {
       try {        
 
         const data = await fetchComments(post.id);
-        // console.log(data);
-        setComments(data);
+        console.log(data);
+        setComments([]);
+        setComments(data);        
         
       } catch (error) {
         console.error(error);
@@ -45,9 +47,8 @@ function Post() {
 
     fetchCommentsWrapper();
       
-  }, [post.id, comments])
-
-
+  }, [post.id, remount])
+  
   return(
   <>
 
@@ -57,12 +58,14 @@ function Post() {
 
     <h2> Comments </h2>
 
-    <NewComment postId={post.id} handleClick={() => setComments(null)}></NewComment> 
+    <NewComment postId={post.id} handleClick={() => setRemount(!remount)}></NewComment> 
+
+    {/* {console.log(comments)} */}
 
     {comments && comments.map(comment => {
 
       return (
-      <CommentDiv comment={comment}></CommentDiv>
+      <CommentDiv key={comment.id} comment={comment}></CommentDiv>
       )
 
     })}

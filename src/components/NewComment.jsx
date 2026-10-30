@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-async function postComment(content, postId) {
+async function postComment(content, postId, handleClick) {
 
   let authorName = 'hey';
 
@@ -18,8 +18,9 @@ async function postComment(content, postId) {
 
   let data = await response.json();
 
-  console.log(data); 
-  
+  console.log(data);
+
+  handleClick();
 
   } catch (error) {
 
@@ -49,9 +50,8 @@ function CommentDiv({ postId, handleClick }) {
       <button
         type='submit'
         onClick={() => {
-          postComment(value, postId)
+          postComment(value, postId, handleClick)
           setValue("")
-          handleClick()
         }}
       >Submit</button>
 
