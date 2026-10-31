@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
-async function postComment(content, postId, handleClick) {
+async function postComment(content, postId, handleClick, navigate) {
 
-  let authorName = 'hey';
+  let authorName = localStorage.getItem('user');
 
   console.log(content);  
   console.log(authorName);  
@@ -29,12 +30,16 @@ async function postComment(content, postId, handleClick) {
 
     console.log(error);
 
+    navigate(`/log-in`);
+
   }
 
 }
 
-function CommentDiv({ postId, handleClick }) {
+function NewComment({ postId, handleClick }) {
   const [value, setValue] = useState("");
+
+  const navigate = useNavigate();
 
   return(
 
@@ -53,7 +58,7 @@ function CommentDiv({ postId, handleClick }) {
       <button
         type='submit'
         onClick={() => {
-          postComment(value, postId, handleClick)
+          postComment(value, postId, handleClick, navigate)
           setValue("")
         }}
       >Submit</button>
@@ -66,4 +71,4 @@ function CommentDiv({ postId, handleClick }) {
 
 }
 
-export default CommentDiv;
+export default NewComment;
