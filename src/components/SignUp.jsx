@@ -64,9 +64,9 @@ function SignUp() {
             </label>
         
             <button 
-                    type='submit'
-                    onClick={() => fetchToken(usernameValue, passwordValue, navigate)}
-                    >Sign Up
+                type='submit'
+                onClick={() => fetchToken(usernameValue, passwordValue, navigate)}
+                >Sign Up
             </button>
 
     </div>

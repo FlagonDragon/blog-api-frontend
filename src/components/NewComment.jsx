@@ -13,7 +13,10 @@ async function postComment(content, postId, handleClick) {
   const response = await fetch("https://blog-api-iv3t.onrender.com/createComment", {
     method: "POST",
     body: JSON.stringify({ content: content, authorName: authorName, postId: postId }),
-    headers: {'Content-type': 'application/json'},
+    headers: {
+      'Content-type': 'application/json', 
+      'authorization': 'Bearer '+localStorage.getItem('token')
+    },
   });
 
   let data = await response.json();
