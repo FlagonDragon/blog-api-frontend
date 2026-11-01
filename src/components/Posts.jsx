@@ -69,18 +69,22 @@ function Posts() {
 
       {posts && posts.map(post => {
 
-        return (
-        
-          <div 
-            key={post.id} 
-            onClick={() => {handleClick(post.id, post)}}
-          >
+        if (post.published == true) {
 
-            <PostDiv post={post}></PostDiv>
+          return (
+          
+            <div 
+              key={post.id} 
+              onClick={() => {handleClick(post.id, post)}}
+            >
 
-          </div>
+              <PostDiv post={post}></PostDiv>
 
-        )
+            </div>
+
+          )
+
+        }
 
       })}
 
