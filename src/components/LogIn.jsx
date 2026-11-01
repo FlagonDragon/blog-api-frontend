@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import '../styles/styles.css';
 
 async function fetchToken(username, password, navigate) {
 

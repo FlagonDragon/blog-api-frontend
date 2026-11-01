@@ -1,7 +1,7 @@
 // import { redirect } from "react-router";
 // import { Children } from "react";
-// import { Navigate } from "react-router";
-import Home from "./components/Home";
+import { Navigate } from "react-router";
+// import Home from "./components/Home";
 import Post from "./components/Post";
 import Posts from "./components/Posts";
 import SignUp from "./components/SignUp";
@@ -11,7 +11,7 @@ import ErrorPage from "./components/ErrorPage";
 const routes = [
   {
     path: "/",
-    element: <Home />,
+    element: <Navigate to="/log-in" replace />,
     errorElement: <ErrorPage />,
   },
   {
