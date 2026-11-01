@@ -33,6 +33,7 @@ function LogIn() {
     const navigate = useNavigate();
 
     return(
+    <>
 
     <div className="formContainer">
 
@@ -60,6 +61,9 @@ function LogIn() {
 
     </div>
 
+    <a href="sign-up">Sign Up</a>
+
+    </>
     )
 
 }

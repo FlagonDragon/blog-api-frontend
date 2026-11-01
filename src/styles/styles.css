@@ -71,3 +71,8 @@ h3 {
     margin: 25px;
     gap: 20px;
 }
+
+a {
+    margin: 25px;
+    color: greenyellow;
+}
