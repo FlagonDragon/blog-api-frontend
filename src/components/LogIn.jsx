@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import '../styles/styles.css';
 
 async function fetchToken(username, password, navigate) {
@@ -62,7 +62,7 @@ function LogIn() {
 
     </div>
 
-    <a href="sign-up">Sign Up</a>
+    <Link to="/sign-up">Sign Up</Link>
 
     </>
     )
